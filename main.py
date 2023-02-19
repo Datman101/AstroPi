@@ -30,21 +30,21 @@ def contrast(im):
 for i in range(0, 17280):
     camera.capture('/home/pi/Desktop/normalImage%s.jpg' % i)
 
-    image = cv2.imread('/home/pi/Desktop/normalImage%s.png' % i)
-    im = np.array(image, dtype=float)/float(255)
+#     image = cv2.imread('/home/pi/Desktop/normalImage%s.png' % i)
+#     im = np.array(image, dtype=float)/float(255)
     
-    out = contrast(im)
+#     out = contrast(im)
 
-    cv2.imwrite('ContrastedImage%s.png' % i, out)
+#     cv2.imwrite('ContrastedImage%s.png' % i, out)
 
-    out = contrast(calc_ndvi(out))
+#     out = contrast(calc_ndvi(out))
 
-    cv2.imwrite('NDVI_Image%s.png' % i, out)
+#     cv2.imwrite('NDVI_Image%s.png' % i, out)
 
-    color_mapped_prep = out.astype(np.uint8)
-    color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+#     color_mapped_prep = out.astype(np.uint8)
+#     color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
 
-    cv2.imwrite('ColourMapped%s.png' % i, color_mapped_image)
+#     cv2.imwrite('ColourMapped%s.png' % i, color_mapped_image)
 
 
 camera.stop_preview()
