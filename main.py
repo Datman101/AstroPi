@@ -6,6 +6,18 @@ from fastiecm import fastiecm
 
 camera = PiCamera()
 
+import cv2
+import numpy as np
+from fastiecm import fastiecm
+from picamera import PiCamera
+import picamera.array
+
+camera = PiCamera()
+camera.rotation = 180
+camera.resolution = (1920, 1080)
+
+
+
 camera.start_preview()
 
 def calc_ndvi(image):
@@ -28,8 +40,14 @@ def contrast(im):
     return out
 
 for i in range(0, 17280):
-    camera.capture('/home/pi/Desktop/normalImage%s.jpg' % i)
-
+        
+    stream = picamera.array.PiRGBArray(camera)
+    camera.capture(stream, format='bgr', use_video_port=True)
+    original = stream.array
+    
+    cv2.imwrite('original.png', original)
+    
+    
 #     image = cv2.imread('/home/pi/Desktop/normalImage%s.png' % i)
 #     im = np.array(image, dtype=float)/float(255)
     
