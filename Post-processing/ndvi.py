@@ -5,6 +5,10 @@ import numpy as np
 def return_ndvi(image, i):
     image = image.astype(np.uint8)
     image = cv2.applyColorMap(image, fastiecm)
+    b, g, r = cv2.split(image)
+    bottom = (r.astype(float) + b.astype(float))
+    bottom[bottom==0] = 0.01
+    ndvi = (r.astype(float) - b) / bottom
     return image
 
 def calc_ndvi(image, i):
