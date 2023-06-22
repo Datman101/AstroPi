@@ -21,7 +21,7 @@ def calc_ndvi(image, i):
     #return image
     ndvi = np.sum(ndvi[0:-1, 0:-1])
     print(ndvi)
-    return ndvi/1944
+    return ndvi/5038848
 
 
 calculatingNDVI = False
